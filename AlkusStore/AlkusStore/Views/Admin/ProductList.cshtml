@@ -1,0 +1,49 @@
+﻿@using AlkusStore.HtmlHelpers
+@model AlkusStore.Models.ViewModels.ProductsViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    <div class="col-md-3">
+
+        <div class="row">
+            <h4>Wyszukiwarka: </h4>
+            @using (Html.BeginForm("SearchProduct", "Admin", FormMethod.Post, new { @class = "" }))
+            {
+                <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <input name="key" type="text" class="form-control" />
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <h4>Wybierz kategorie:</h4>
+            @Html.Partial("_ProductCategoryMenuPartial", Model.CategoriesModel)
+        </div>
+
+        <div class="row">
+            <h4>Sortuj według:</h4>
+            @Html.Partial("_SortProductsMenuPartial")
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <h4>Produkty:</h4>
+
+        @foreach (var item in Model.Products)
+        {
+            <a href="@Url.Action("EditProduct", "Admin", new { id = item.Id })">
+                @Html.Partial("_AdminProductItemPartial", item)
+            </a>
+        }
+
+        <div class="text-center">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(Model.CategoriesModel.Action, new { category = Model.CategoriesModel.CurrentCategory, page = x, sortBy = Model.SortBy }))
+        </div>
+    </div>
+</div>

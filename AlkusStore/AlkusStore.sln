@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlkusStore", "AlkusStore\AlkusStore.csproj", "{8B7A74D5-BFEB-4CEF-8349-19BFED29CFF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlkusStore.Models", "AlkusStore.Models\AlkusStore.Models.csproj", "{791EA44E-DF37-4B9D-BAFA-0EB136DB3C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlkusStore.Repository", "AlkusStore.Repository\AlkusStore.Repository.csproj", "{4D087211-F212-4539-9D9E-55976BEEC9D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B7A74D5-BFEB-4CEF-8349-19BFED29CFF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B7A74D5-BFEB-4CEF-8349-19BFED29CFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B7A74D5-BFEB-4CEF-8349-19BFED29CFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B7A74D5-BFEB-4CEF-8349-19BFED29CFF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{791EA44E-DF37-4B9D-BAFA-0EB136DB3C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{791EA44E-DF37-4B9D-BAFA-0EB136DB3C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{791EA44E-DF37-4B9D-BAFA-0EB136DB3C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{791EA44E-DF37-4B9D-BAFA-0EB136DB3C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D087211-F212-4539-9D9E-55976BEEC9D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D087211-F212-4539-9D9E-55976BEEC9D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D087211-F212-4539-9D9E-55976BEEC9D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D087211-F212-4539-9D9E-55976BEEC9D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

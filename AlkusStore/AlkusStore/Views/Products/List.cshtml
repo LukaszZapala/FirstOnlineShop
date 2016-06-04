@@ -1,0 +1,50 @@
+﻿@using AlkusStore.HtmlHelpers
+@model AlkusStore.Models.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Alkus - Lista produktów";
+}
+
+
+<div class="container">
+
+    <div class="col-md-3">
+        <div class="row">
+            <h4>Wyszukiwarka: </h4>
+            @using (Html.BeginForm("Search", "Products"))
+            {
+                <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <input name="key" type="text" class="form-control" />
+                </div>
+            }
+        </div>
+        <div class="row">
+            <h4>Wybierz kategorie:</h4>
+            @Html.Partial("_ProductCategoryMenuPartial", Model.CategoriesModel)
+        </div>
+        
+        <div class="row">
+            <h4>Sortuj według:</h4>
+            @Html.Partial("_SortProductsMenuPartial")
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <h4>Produkty:</h4>
+
+        @foreach (var item in Model.Products)
+        {
+            <a href="@Url.Action("Details", "Products", new { id = item.Id })">
+                @Html.Partial("_ShopProductItemPartial", item)
+            </a>
+        }
+
+        <div class="text-center">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { category = Model.CategoriesModel.CurrentCategory, page = x,  sortBy = Model.SortBy}))
+        </div> 
+    </div>
+</div>
+
+

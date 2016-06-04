@@ -1,0 +1,21 @@
+﻿@model IEnumerable<AlkusStore.Models.Identity.ApplicationUser>
+
+<div class="container" style="width: 60%;">
+    
+    @foreach (var user in Model)
+    {
+        <div class="panel">
+            <div class="panel-heading panel-primary text-center">
+                <h4>Użytkownik <strong>@user.Id</strong></h4>
+            </div>
+            <div class="panel-body">
+                <h4><strong>Imię i nazwisko: </strong> @user.FirstName @user.LastName</h4>
+                <h4><strong>Adres:</strong> @user.Address</h4>
+                <h4><strong>Email: </strong> @user.Email</h4>
+            </div
+        </div>
+    }
+
+    
+
+</div>

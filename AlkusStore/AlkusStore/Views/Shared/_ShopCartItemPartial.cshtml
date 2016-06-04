@@ -1,0 +1,48 @@
+﻿@model AlkusStore.Models.ViewModels.ProductCart
+
+<div class="col-md-2">
+    <img src="@Model.ImagePath" alt="..." style="width: 100%" />
+</div>
+
+<div class="col-md-8">
+    <h4>@Model.Name</h4>
+    <h5>Ilość sztuk: @Model.Quantity</h5>
+    <h5>Cena za @Model.Quantity sztuk: <span class="label label-danger">@Model.Price.ToString("c")</span></h5>    
+</div>
+
+<div class="col-md-2 text-right">
+
+    <div style="margin-bottom: 5px;" >
+        @using (Html.BeginForm())
+        {
+            @Html.Hidden("productId", Model.Id)
+            @Html.Hidden("quantity", 1)
+            <button type="submit" class="btn btn-xs btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        }
+    </div>
+
+    <div style="margin-bottom: 5px;">
+        @using (Html.BeginForm())
+        {
+            @Html.Hidden("productId", Model.Id)
+            @Html.Hidden("quantity", -1)
+            <button type="submit" class="btn btn-xs btn-warning">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        }
+    </div>
+
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.Hidden("productId", Model.Id)
+            @Html.Hidden("quantity", 0)
+            <button type="submit" class="btn btn-xs btn-danger">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        }
+    </div>    
+
+</div>

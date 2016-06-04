@@ -1,0 +1,60 @@
+﻿@model AlkusStore.Models.Entities.Product
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (ViewBag.EditError == null)
+{
+    <div class="panel" style="width: 30%; margin: 0 auto; margin-bottom: 2%;">
+        <div class="panel-heading panel-primary">
+            <h4 class="text-center">
+                <span class="glyphicon glyphicon-edit"></span> Edycja produktu nr <strong>@Model.Id</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+            <div class="text-center">
+                <img src="@Model.ImagePath" alt="..." width="100px" />
+            </div>
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <label>Nazwa</label>
+                    @Html.TextBoxFor(x => x.Name, null, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Kategoria</label>
+                    @Html.TextBoxFor(x => x.Category, null, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Opis</label>
+                    @Html.TextAreaFor(x => x.Description, 8, 1, new { @class = "form-control" })
+                </div>
+                <div class="form-group pull-left">
+                    <label>Cena</label>
+                    @Html.TextBoxFor(x => x.Price, null, new { @class = "form-control" })
+                </div>
+                <div class="form-group pull-right">
+                    <label>Ilość sztuk w magazynie</label>
+                    @Html.TextBoxFor(x => x.Stock, null, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Adres do obrazka</label>
+                    @Html.TextBoxFor(x => x.ImagePath, null, new { @class = "form-control" })
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" class="btn btn-success" value="Zapisz" />
+                    @Html.ActionLink("Usuń", "RemoveProduct", "Admin", new { id = Model.Id }, new { @class = "btn btn-danger" })
+                </div>
+            }
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="alert alert-danger" style="width: 30%; margin: 0 auto; margin-bottom: 2%;">
+        <a href="@Url.Action("ProductList", "Admin")" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Błąd!</strong> @ViewBag.EditError
+    </div>
+}

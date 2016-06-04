@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav" style="margin-right: 20px;">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    Witaj @User.Identity.GetUserName()
+                    <span class="caret"></span> 
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="@Url.Action("List", "Orders", routeValues: null)">
+                            <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Zamówienia
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Edit", "Account", routeValues: null)">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edytuj 
+                        </a>
+                    </li>
+                </ul>
+            </li>          
+            <li>
+                <a id="registerLink" href="javascript:document.getElementById('logoutForm').submit()">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Wyloguj
+                </a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav">
+
+        <li>
+            <a id="registerLink" href="@Url.Action("Register", "Account", routeValues: null)">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Rejestracja
+            </a>
+        </li>
+        <li>
+            <a id="loginLink" href="@Url.Action("Login", "Account", routeValues: null)">
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Logowanie
+            </a>
+        </li>
+        
+    </ul>    
+}

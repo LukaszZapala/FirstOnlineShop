@@ -1,0 +1,31 @@
+﻿@model AlkusStore.Models.ViewModels.ProductsViewModel
+
+<div class="list-group">
+    
+    @if (Model.CategoriesModel.Action == "List" || Model.CategoriesModel.Action == "ProductList")
+    {
+        @Html.RouteLink("Domyślne", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "default" }, new { @class = "list-group-item " + (Model.SortBy == "default" ? "active" : "") })
+
+        @Html.RouteLink("Nazwa rosnąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "NameAscending" }, new { @class = "list-group-item " + (Model.SortBy == "NameAscending" ? "active" : "") })
+
+        @Html.RouteLink("Nazwa malejąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "NameDescending" }, new { @class = "list-group-item " + (Model.SortBy == "NameDescending" ? "active" : "") })
+
+        @Html.RouteLink("Cena rosnąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "PriceAscending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceAscending" ? "active" : "") })
+
+        @Html.RouteLink("Cena malejąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "PriceDescending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceDescending" ? "active" : "") })
+    }
+    else
+    {
+        @Html.RouteLink("Domyślne", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, key = ViewBag.Key, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "default" }, new { @class = "list-group-item " + (Model.SortBy == "default" ? "active" : "") })
+
+        @Html.RouteLink("Nazwa rosnąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, key = ViewBag.Key, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "NameAscending" }, new { @class = "list-group-item " + (Model.SortBy == "NameAscending" ? "active" : "") })
+
+        @Html.RouteLink("Nazwa malejąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, key = ViewBag.Key, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "NameDescending" }, new { @class = "list-group-item " + (Model.SortBy == "NameDescending" ? "active" : "") })
+
+        @Html.RouteLink("Cena rosnąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, key = ViewBag.Key, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "PriceAscending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceAscending" ? "active" : "") })
+
+        @Html.RouteLink("Cena malejąco", new { controller = Model.CategoriesModel.Controller, action = Model.CategoriesModel.Action, key = ViewBag.Key, category = Model.CategoriesModel.CurrentCategory, page = 1, sortBy = "PriceDescending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceDescending" ? "active" : "") })
+    }
+
+
+</div>

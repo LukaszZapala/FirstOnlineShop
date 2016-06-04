@@ -1,0 +1,45 @@
+﻿@model AlkusStore.Models.ViewModels.RegisterViewModel
+
+@{
+    ViewBag.Title = "Sklep Alkus - rejestracja";
+}
+
+<div class="panel" style="width: 30%; margin: 0 auto; margin-bottom: 2%;">
+    <div class="panel-heading panel-primary">
+        <h4 class="text-center">Rejestracja do Sklepu Alkus</h4>
+    </div>
+
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="panel-body">
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                <div class="form-group">
+                    <label>@property.DisplayName</label><br />
+                    @Html.ValidationMessage(property.PropertyName, new { @class = "text-danger" })
+                    @if (property.PropertyName == "Password" || property.PropertyName == "ConfirmPassword")
+                    {
+                        @Html.Password(property.PropertyName, null, new { @class = "form-control" })
+                    }
+                    else
+                    {
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                    }
+                </div>
+
+            }
+        </div>
+        <div class="panel-footer text-center">
+            <input type="submit" value="Zarejestruj" class="btn btn-primary" />
+        </div>
+    }
+</div>
+
+@if (@ViewBag.RegisterError != null)
+{
+    <div class="alert alert-danger" style="width: 30%; margin: 0 auto; margin-bottom: %;">
+        <strong>Błąd!</strong> @ViewBag.RegisterError
+    </div>
+}

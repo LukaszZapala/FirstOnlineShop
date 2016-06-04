@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading panel-primary">
+                <h4><span class="glyphicon glyphicon-list-alt"></span> Produkty</h4>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-4">
+                    <h4>
+                        <a href="@Url.Action("ProductList", "Admin")">
+                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Lista
+                        </a>
+                    </h4>
+                </div>
+
+                <div class="col-md-4">
+                    <h4>
+                        <a href="@Url.Action("AddProduct", "Admin")">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj
+                        </a>
+                    </h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading panel-primary">
+                <h4><span class="glyphicon glyphicon-user"></span> Użytkownicy</h4>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-4">
+                    <h4>
+                        <a href="@Url.Action("UserList", "Admin")">
+                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Lista
+                        </a>
+                    </h4>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading panel-primary">
+                <h4><span class="glyphicon glyphicon-transfer"></span> Zamówienia</h4>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-4">
+                    <h4>
+                        <a href="@Url.Action("OrderList", "Admin")">
+                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Lista
+                        </a>
+                    </h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+﻿@model AlkusStore.Models.ViewModels.OrdersViewModels
+
+@Html.RouteLink("Domyślne", new { controller = "Orders", action = "List", page = 1, sortBy = "default" }, new { @class = "list-group-item " + (Model.SortBy == "default" ? "active" : "") })
+
+@Html.RouteLink("Daty rosnąco", new { controller = "Orders", action = "List", page = 1, sortBy = "DateAscending" }, new { @class = "list-group-item " + (Model.SortBy == "DateAscending" ? "active" : "") })
+
+@Html.RouteLink("Daty malejąco", new { controller = "Orders", action = "List", page = 1, sortBy = "DateDescending" }, new { @class = "list-group-item " + (Model.SortBy == "DateDescending" ? "active" : "") })
+
+@Html.RouteLink("Cena rosnąco", new { controller = "Orders", action = "List", page = 1, sortBy = "PriceAscending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceAscending" ? "active" : "") })
+
+@Html.RouteLink("Cena malejąco", new { controller = "Orders", action = "List", page = 1, sortBy = "PriceDescending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceDescending" ? "active" : "") })
+
+@Html.RouteLink("Status rosnąco", new { controller = "Orders", action = "List", page = 1, sortBy = "StatusAscending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceAscending" ? "active" : "") })
+
+@Html.RouteLink("Status malejąco", new { controller = "Orders", action = "List", page = 1, sortBy = "StatusDescending" }, new { @class = "list-group-item " + (Model.SortBy == "PriceDescending" ? "active" : "") })

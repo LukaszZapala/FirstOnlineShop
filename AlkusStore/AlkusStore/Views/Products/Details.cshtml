@@ -1,0 +1,69 @@
+﻿@model  AlkusStore.Models.Entities.Product
+@{
+    ViewBag.Title = "Szczegóły dotyczace produktu: " + Model.Name;
+}
+
+<div class="container">
+    <div class="panel" style="width: 60%; margin: 0 auto;">
+
+        <div class="panel-heading panel-primary text-center">
+            <h1"><strong>@Model.Name</strong></h1>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-md-2">
+                @if (Model.ImagePath == null)
+                {
+                    <img src="http://cdn3.saveritemedical.com/product-default.jpg" alt="..." style="width: 100%" />
+                }
+                else
+                {
+                    <img src="@Model.ImagePath" alt="..." style="width: 100%" />
+                }
+
+            </div>
+
+            <div class="col-md-10">
+
+                <div class="panel-group">
+
+                    @if (Model.Stock == 0)
+                    {
+                        <p>Brak produktów w magazynie!</p>
+                    }
+                    else
+                    {
+                        <p><strong>Ilość towaru w magazynie: </strong> @Model.Stock </p>
+                    }
+
+                </div>
+
+                <div class="panel-group">
+                    <p>
+                        <strong>Cena za sztuke: </strong>
+                        <span class="label label-danger">@Model.Price.ToString("c")</span>
+                    </p>
+                </div>
+
+                <div class="panel-group">
+                    <p>
+                        <strong>Opis: </strong>
+                        @Model.Description
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-footer text-center">
+            @using (Html.BeginForm("List", "ShoppingCart"))
+            {
+                @Html.Hidden("productId", Model.Id)
+                <input type="submit" class="btn btn-success" value="Dodaj do koszyka" />
+            }
+        </div>
+
+    </div>
+</div>
+

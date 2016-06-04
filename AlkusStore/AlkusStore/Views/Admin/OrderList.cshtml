@@ -1,0 +1,52 @@
+﻿@using AlkusStore.HtmlHelpers
+@model AlkusStore.Models.ViewModels.OrdersViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    <div class="col-md-3">
+        <div class="row">
+            <h4>Wybierz status zamówienia:</h4>
+            @Html.Partial("_StatusMenuPartial", Model.StatusModel)
+        </div>
+        <div class="row">
+            <h4>Sortuj według:</h4>
+            @Html.Partial("_SortOrdersMenuPartial")
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <h4>Lista zamówień: </h4>
+
+        @foreach (var item in Model.Orders)
+        {
+            <div class="panel">
+                <div class="panel-heading panel-primary">
+                    Zamówienie nr <strong>@item.Id</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-10">
+                        <h5><strong>Data:</strong> @item.Date</h5>
+                        <h5><strong>Szczegóły:</strong> @item.Name</h5>
+                        <h5><strong>Koszt:</strong> @item.Price</h5>
+                        <h5><strong>Status zamówienia:</strong> @item.Status</h5>
+                    </div>
+                    @if (item.Status != "ZREALIZOWANE")
+                    {
+                        <div class="col-md-2">
+                            @Html.ActionLink("Akceptuj", "RedeemOrder", "Admin", new { id = @item.Id }, new { @class = "btn btn-success btn-block" })
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        <div class="text-center">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action(Model.StatusModel.Action, new { status = Model.StatusModel.CurrentStatus, page = x, sortBy = Model.SortBy }))
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@model AlkusStore.Models.ViewModels.StatusViewModel
+
+<div class="list-group">
+
+    @if (Model.Action == "Search")
+    {
+        @Html.RouteLink("Wszystkie produkty", new { controller = Model.Controller, action = Model.Action, key = ViewBag.Key, page = 1 }, new { @class = "list-group-item " + (Model.CurrentStatus == null ? "active" : "") })
+    }
+    else
+    {
+        @Html.RouteLink("Wszystkie produkty", new { controller = Model.Controller, action = Model.Action, page = 1 }, new { @class = "list-group-item " + (Model.CurrentStatus == null ? "active" : "") })
+    }
+
+
+    @foreach (var item in Model.List)
+    {
+        if (Model.Action == "Search")
+        {
+            @Html.RouteLink(item, new { controller = Model.Controller, action = Model.Action, key = ViewBag.Key, status = item, page = 1 }, new { @class = "list-group-item " + (item == Model.CurrentStatus ? "active" : "") })
+        }
+        else
+        {
+            @Html.RouteLink(item, new { controller = Model.Controller, action = Model.Action, status = item, page = 1 }, new { @class = "list-group-item " + (item == Model.CurrentStatus ? "active" : "") })
+        }
+    }
+
+</div>

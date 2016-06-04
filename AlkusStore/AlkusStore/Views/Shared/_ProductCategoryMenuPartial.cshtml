@@ -1,0 +1,27 @@
+﻿@model AlkusStore.Models.ViewModels.CategoriesViewModel
+
+<div class="list-group">
+
+    @if (Model.Action.Contains("Search"))
+    {
+        @Html.RouteLink("Wszystkie produkty", new { controller = Model.Controller, action = Model.Action, key = ViewBag.Key, page = 1 }, new { @class = "list-group-item " + (Model.CurrentCategory == null ? "active" : "") })
+    }
+    else
+    {
+        @Html.RouteLink("Wszystkie produkty", new { controller = Model.Controller, action = Model.Action, page = 1 }, new { @class = "list-group-item " + (Model.CurrentCategory == null ? "active" : "") })
+    }
+
+
+    @foreach (var item in Model.Categories)
+    {
+        if (Model.Action.Contains("Search"))
+        {
+            @Html.RouteLink(item, new { controller = Model.Controller, action = Model.Action, key = ViewBag.Key, category = item, page = 1 }, new { @class = "list-group-item " + (item == Model.CurrentCategory ? "active" : "") })
+        }
+        else
+        {
+            @Html.RouteLink(item, new { controller = Model.Controller, action = Model.Action, category = item, page = 1 }, new { @class = "list-group-item " + (item == Model.CurrentCategory ? "active" : "") })
+        }
+    }
+
+</div>

@@ -1,0 +1,44 @@
+﻿@model AlkusStore.Models.ViewModels.ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "Alkus - Koszyk";
+}
+
+<div class="container">
+
+    <div class="panel" style="width: 60%; margin: 0 auto">
+
+        @if (Model.Products.Count() == 0)
+        {
+            <div class="panel-heading">
+                <h4 class="text-center" style="margin-bottom: 2%;">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Twój koszyk jest pusty!
+                </h4>
+            </div>            
+        }
+        else
+        {
+            <div class="panel-heading panel-primary">
+                <h4 class="text-center" style="margin-bottom: 2%;">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Twój koszyk: @Model.Price.ToString("c")
+                </h4>
+            </div>
+            
+            <div class="panel-body">
+                @foreach (var item in Model.Products)
+                {
+                    <a href="@Url.Action("Details", "Products", new { id = item.Id })">
+                        @Html.Partial("_ShopCartItemPartial", item)
+                    </a>
+                }
+            </div>
+            
+            <div class="panel-footer text-center" style="margin-top: 2%;">
+                @Html.ActionLink("Złóż zamówienie", "Order", "Orders", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Wyczyść koszyk", "Clear", "ShoppingCart", null, new { @class = "btn btn-warning" })
+            </div>
+        }    
+
+    </div>
+</div>
+

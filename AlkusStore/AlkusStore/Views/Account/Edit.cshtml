@@ -1,0 +1,34 @@
+﻿@model AlkusStore.Models.ViewModels.EditViewModel
+
+<div class="panel" style="width: 30%; margin: 0 auto; margin-bottom: 5%;">
+    <div class="panel-heading panel-primary">
+        <h4 class="text-center">Edycja konta w Sklepie Alkus</h4>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="panel-body">
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                <div class="form-group">
+                    <label>@property.DisplayName</label><br />
+                    @Html.ValidationMessage(property.PropertyName, new { @class = "text-danger" })
+                    @if (property.PropertyName.Contains("Password"))
+                    {
+                        @Html.Password(property.PropertyName, null, new { @class = "form-control" })
+                    }
+                    else
+                    {
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                    }
+                </div>
+
+            }
+        </div>
+        <div class="panel-footer text-center">
+            <input type="submit" value="Aktualizuj" class="btn btn-primary" />
+        </div>
+    }
+</div>
